@@ -1,0 +1,44 @@
+<section id="quoDetails">
+    
+
+    <div *ngIf="qouteDetails.proposalDecision=='R'" class="container m-auto">
+        <div class="alert alert-danger mt-5 w-50 text-center m-auto " role="alert">
+            We will Contact you Soon
+          </div>
+    </div>
+    
+    <div *ngIf="qouteDetails.proposalDecision=='A'" class="container mt-5 d-flex justify-content-center align-items-center text-center">
+    
+            <div class="w-50">
+                <h2 class="font_Coloered my-3">Quotation Details: </h2>
+    
+                <div class="row">
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Sum Insured : </strong>{{qouteDetails.sumInsured}} JOD</p>
+                    </div>
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Terms : </strong>{{qouteDetails.terms}} Years</p>
+                    </div>
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Direct Premium : </strong>{{qouteDetails.directPremium}} JOD</p>
+                    </div>
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Extra Mortality : </strong>{{qouteDetails.em * 100}} %</p>
+                    </div>
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Loading : </strong>{{qouteDetails.loading}} JOD</p>
+                    </div>
+                    <div class="div mb-2">
+                        <p><strong class=" p_2">Gross Premium : </strong>{{qouteDetails.grossPremium}} JOD</p>
+                    </div>
+    
+                    <div class="mt-3">
+                        <button class="btn btn_colored m-auto shadow_3 mx-3" routerLink="/chechOut">Check out</button>
+                        <button class="btn btn_White m-auto " (click)="back()">Go back </button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    </section>
+    

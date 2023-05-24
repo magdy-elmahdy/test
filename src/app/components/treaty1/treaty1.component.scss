@@ -1,0 +1,97 @@
+.treaty{
+  min-height:90vh;
+}
+.item{
+    text-align: center;
+    .item-focus{
+        border-radius: 7px;
+    background-color: rgb(254 240 138 /1);
+        // border:solid 1px #000;
+        box-shadow: 0px 5px 10px rgb(0 0 0 / 30%);
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover{
+            background-color: #FFC000;
+    }
+        &:hover h2{
+            transform:scale(1.1);
+    }
+    }
+    .item-focus h2{
+        padding: 40px 0;
+        transition: 0.3s;
+    }
+
+}
+h2 , h3{
+    margin: 0;
+}
+.margin-cus{
+    margin-left: 15px;
+}
+.f-div h3{
+    font-weight: 500;
+
+}
+.w-20{
+    width:70%;
+}
+
+fa-icon{
+    font-size:25px;
+    color:#A5A5A5;
+    margin: 0 10px;
+}
+
+
+            //Spinner
+.loader {
+    width: 72px;
+    height: 72px;
+    display: inline-block;
+    position: relative;
+    border: 2px solid #09c;
+    box-sizing: border-box;
+    animation: rotation 2s linear infinite;
+  }
+  .loader::after,
+  .loader::before {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 2px solid #FF3D00;
+    width: 62px;
+    height: 62px;
+    animation: rotationBack 1.5s linear infinite;
+    transform-origin: center center;
+  }
+  .loader::before {
+    width: 52px;
+    height: 52px;
+    border-color:tomato;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  

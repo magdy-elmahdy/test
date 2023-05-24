@@ -1,0 +1,84 @@
+<div class="treaty">
+    <div class="container mt-1" data-aos-duration="1500" data-aos="fade-right">
+        <div class="row">
+    
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mb-2">               
+                    <h2 routerLink="/slip"><fa-icon [icon]="faFile"></fa-icon>Slip</h2>
+    
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mb-2">
+                    
+                    <h2 routerLink="/application-form/{{treatyId}}"><fa-icon [icon]="faUser"></fa-icon>Aplication Form</h2>
+                    
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mx-2">
+                <h2 routerLink="/proposalForms"><fa-icon [icon]="faBell"></fa-icon>Proposal Forms</h2>
+                    
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mb-2">
+                    <h2><fa-icon [icon]="faTable"></fa-icon>Rates Table</h2>
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mb-2">
+                    <h2 routerLink="/quotations"><fa-icon [icon]="faDashboard"></fa-icon>Quotations</h2>
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mx-2">
+                    <h2><fa-icon [icon]="faMoneyBill"></fa-icon>Online Payment</h2>
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mx-2">
+                    <h2 routerLink="/polices"><fa-icon [icon]="faEye  "></fa-icon>Polices</h2>
+                </div>
+            </div>
+            <div class="item col-lg-3 col-md-6 px-2 my-1">
+                <div class="item-focus mx-2">
+                    <h2 routerLink="/reports"><fa-icon [icon]="faFlag"></fa-icon>Reports</h2>
+                </div>
+            </div>
+    
+        </div>
+        <hr class="mt-1 text-danger">
+    
+        <div class="mt-5 mx-5">
+            <span class="loader m-auto" *ngIf="flag!=true"></span>
+        </div>
+        <div class="row" *ngIf="flag">
+        <h2 class="mb-2">Treaty Information</h2>
+            <div class="d-flex w-20">
+                <div class="f-div">
+                    <h3>Treaty Name :</h3>
+                    <h3>Type :</h3>
+                    <h3>Ceding Company :</h3>
+                    <h3>Location :</h3>
+                    <h3>Inception Date :</h3>
+                    <h3>Currency Date :</h3>
+                    <h3>Intermediary :</h3>
+                </div>
+                <div class=".margin-cus font_p float-left">
+                    <h3>{{TheTreaty?.name}}</h3>
+                    <h3>{{TheTreaty?.type}}</h3>
+                    <h3>{{TheTreaty?.campany}}</h3>
+                    <h3>{{TheTreaty?.location}}</h3>
+                    <h3>{{TheTreaty?.inceptionDate}}</h3>
+                    <h3>{{TheTreaty?.inceptionDate}}</h3>  
+                    <h3>{{TheTreaty?.intermediary}}</h3>
+                </div>
+            </div>
+    
+    
+        </div>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,143 @@
+<div class="container-fluid my-2 reports">
+
+    <form [formGroup]="Form">
+      <div class="row my-3">
+        <div class="col-md-3">
+          <label class="p_1">Choose report</label>
+          <select (change)="GetSelectValue($event)" class=" cus_input rounded" aria-label="Default select example">
+            <option selected value="Bordereau">Bordereau</option>
+            <option value="Quotations">Quotations</option>
+          </select> 
+        </div>
+        <div class="col-md-6 offset-md-3">
+          <div class="row">
+            <div class="col-md-6">
+              <label class="p_1">From :</label>
+              <input formControlName="start" type="date" class="cus_input rounded">
+            </div>
+            <div class="col-md-6">
+              <label class="p_1">To :</label>
+              <input formControlName="end" type="date" class="cus_input rounded">
+            </div>
+            <div class="col-md-6">
+              <label class="p_1">Find :</label>
+              <input formControlName="search" placeholder="ex.something" type="text" class="cus_input rounded">
+            </div>
+            <div class="col-md-6 mt-4">
+                  <button (click)="applyFilter()" class="btn btn_White mt-2">Search</button>
+                  <a (click)="exportFile()" class="btn btn_White mx-1 mt-2">Export File</a>  
+                  <button (click)="resetFilter()" class="btn btn_White mt-2">Reset</button> 
+            </div>
+
+          </div>
+        </div>
+      </div>
+  
+    </form>
+
+
+                  <!-- Table TO Dispay the Data -->
+<div class="scroll">
+  <table mat-table [dataSource]="roports" class="mat-elevation-z8">
+
+    <!-- Product Column -->
+    <ng-container matColumnDef="Product">
+      <th mat-header-cell *matHeaderCellDef> Product </th>
+      <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+    </ng-container>  
+
+    <!-- Policy Holder Column -->                                     
+    <ng-container matColumnDef="FullName">
+      <th mat-header-cell *matHeaderCellDef> Full Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+    </ng-container>
+  
+    <!-- DOB Column -->
+    <ng-container matColumnDef="DOB">
+      <th mat-header-cell *matHeaderCellDef> DOB </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+    </ng-container>
+
+    <!-- SI Column -->
+    <ng-container matColumnDef="SI">
+      <th mat-header-cell *matHeaderCellDef> SI </th>
+      <td mat-cell *matCellDef="let element"> {{element.sumInsured}} </td>
+    </ng-container>
+  
+    <!-- EM Column -->
+    <ng-container matColumnDef="EM">
+      <th mat-header-cell *matHeaderCellDef> EM </th>
+      <td mat-cell *matCellDef="let element"> {{element.em}} </td>
+    </ng-container>
+  
+    <!-- Reinsurance Rate Column -->
+    <ng-container matColumnDef="ReinsuranceRate">
+      <th mat-header-cell *matHeaderCellDef> Reinsurance Rate </th>
+      <td mat-cell *matCellDef="let element"> {{element.reinsuranceRate}} </td>
+    </ng-container>
+  
+    <!-- Reinsurance Premium Column -->
+    <ng-container matColumnDef="ReinsurancePremium">
+      <th mat-header-cell *matHeaderCellDef> Reinsurance Premium </th>
+      <td mat-cell *matCellDef="let element"> {{element.reinsurancePremium}} </td>
+    </ng-container>
+  
+    <!-- Loading Column -->
+    <ng-container matColumnDef="Loading">
+      <th mat-header-cell *matHeaderCellDef> Loading </th>
+      <td mat-cell *matCellDef="let element"> {{element.loading}} </td>
+    </ng-container>
+  
+    <!-- Net Rate Column -->
+    <ng-container matColumnDef="NetRate">
+      <th mat-header-cell *matHeaderCellDef> Net Rate </th>
+      <td mat-cell *matCellDef="let element"> {{element.directRate}} </td>
+    </ng-container>
+  
+    <!-- Net Premium Column -->
+    <ng-container matColumnDef="NetPremium">
+      <th mat-header-cell *matHeaderCellDef> Net Premium </th>
+      <td mat-cell *matCellDef="let element"> {{element.directPremium}} </td>
+    </ng-container>
+  
+    <!-- Issue Fees Column -->
+
+  
+    <!-- Gross Premium Column -->
+    <ng-container matColumnDef="Gros">
+      <th mat-header-cell *matHeaderCellDef>Gross premium </th>
+      <td mat-cell *matCellDef="let element"> {{element.grossPremium}} </td>
+    </ng-container>
+
+            <!-- proposalSubmitted  Column -->
+            <ng-container  *ngIf="flag" matColumnDef="proposalSubmitted">
+              <th mat-header-cell *matHeaderCellDef>proposal Submitted</th>
+              <td mat-cell *matCellDef="let element"> {{element.proposalSubmitted}} </td>
+            </ng-container>
+            <!-- paymentDone  Column -->
+            <ng-container  *ngIf="flag" matColumnDef="paymentDone">
+              <th mat-header-cell *matHeaderCellDef>Payment Done</th>
+              <td mat-cell *matCellDef="let element"> {{element.paymentDone}} </td>
+            </ng-container>
+            <!-- inception Date  Column -->
+            <ng-container  *ngIf="flag" matColumnDef="inceptionDate">
+              <th mat-header-cell *matHeaderCellDef>Inception Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.inceptionDate}} </td>
+            </ng-container>
+
+          
+  
+
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>
+  
+</div>
+      <!-- <mat-paginator #paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator> -->
+
+
+      
+</div>

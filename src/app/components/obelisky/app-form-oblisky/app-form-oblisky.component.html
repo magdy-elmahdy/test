@@ -1,0 +1,127 @@
+
+<div class="container app_form" data-aos-duration="1000" data-aos="zoom-in-right">
+    <!----------------------------- Start Contact ----------------->
+<section id="contact">
+    <div class="container">
+      <div class="row">
+          <p class="font_Coloered text-center">Application form</p>
+
+        
+            <div class="col-lg-6">
+              <form [formGroup]="AppForm">
+                <div class="row">
+                          <!-- full name -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Full name :</label>
+                          <input formControlName="fullName"[class.is-valid]="this.AppForm.controls.fullName.status=='VALID'" type="text" class=" cus_input form-control" placeholder="ex.Mohamed Ali" (click)="inputt()">
+                      </div>
+                      <div *ngIf="AppForm.controls.fullName.errors && AppForm.controls.fullName.touched" class="alert alert-danger">
+                        Please Enter Correct Full name
+                       </div>
+                  </div>
+                                                <!-- Select gender : -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Select gender :</label>
+                          <select (change)="selectgender($event)" (change)="getValidInputs()" class="form-select" aria-label="Default select example" class="cus_input" (click)="inputt()">
+                              <option disabled selected>Select Gender</option>
+                              <option value="0">Male</option>
+                              <option value="1">Female</option>
+                          </select> 
+                      </div>
+                  </div>
+                                                <!-- DOB -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Date of birth :</label>
+                          <input formControlName="dateOfBirth"[class.is-valid]="this.AppForm.controls.dateOfBirth.status=='VALID'" type="date" class=" cus_input  form-control" placeholder="ex.White" (click)="inputt()">
+                      </div>
+                      <div *ngIf="AppForm.controls.dateOfBirth.errors && AppForm.controls.dateOfBirth.touched" class="alert alert-danger">
+                        Your Date Of birth Is Required 
+                       </div>
+                  </div>
+                          <!-- Email -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Email :</label>
+                          <input formControlName="email" [class.is-valid]="this.AppForm.controls.email.status=='VALID'" type="email" class=" cus_input  form-control" placeholder="something@gmail.com" (click)="inputt()">
+                      </div>
+                      <div *ngIf="AppForm.controls.email.errors && AppForm.controls.email.touched" class="alert alert-danger">
+                        Please Enter Correct Email
+                       </div>
+                  </div>
+                              <!-- Mobile -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Mobile :</label>
+                          <input formControlName="mobile"[class.is-valid]="this.AppForm.controls.mobile.status=='VALID'" type="text" class=" cus_input  form-control" placeholder="ex.0214546" (click)="inputt()">
+                      </div>
+                      <div *ngIf="AppForm.controls.mobile.errors && AppForm.controls.mobile.touched" class="alert alert-danger">
+                        Please Enter Correct Mobile Number
+                       </div>
+                  </div>
+
+                              <!-- Select Ci Plan : -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Critical illness plan :</label>
+                          <select  (change)="selectCiPlan($event)" (change)="getValidInputs()" class="form-select" aria-label="Default select example"class=" cus_input "  (click)="inputt()">
+                              <option  disabled selected>Select Critical illness</option>
+                              <option value="1">Plan | 1 Illness</option>
+                              <option value="2">Plan || 2 Illness</option>
+                              <option value="3">Plan ||| 5 Illness</option>
+                              <option value="4">Plan |V 10 Illness</option>
+                          </select>
+                      </div>
+                  </div>
+                              <!-- Select Sum insured term : -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Sum insured :</label>
+                          <select (change)="selectSumInsured($event)" (change)="getValidInputs()" class="form-select" aria-label="Default select example"class=" cus_input " (click)="inputt()">
+                              <option disabled selected>Select Sum insured </option>
+                              <option value="1000">1,000 JOD</option>
+                              <option value="5000">5,000 JOD</option>
+                              <option value="15000">15,000 JOD</option>
+                              <option value="20000">20,000 JOD</option>
+                              <option value="25000">25,000 JOD</option>
+                              <option value="30000">30,000 JOD</option>
+                          </select> 
+                      </div>
+                  </div>
+                              <!-- Select Duration : -->
+                  <div class="col-md-12">
+                      <div class="mb-2">
+                          <label class="p_1">Duration :</label>
+                          <select (change)="selectterms($event)" (change)="getValidInputs()" class="form-select" aria-label="Default select example" class="cus_input " (click)="inputt()">
+                              <option  disabled selected>Select Duration</option>
+                              <option value="1">1 Year</option>
+                              <option value="2">2 Years</option>
+                              <option value="3">3 Years</option>
+                              <option value="4">4 Years</option>
+                              <option value="5">5 Years</option>
+                          </select> 
+                      </div>
+                  </div>
+
+                </div>
+      
+                  <div class="col-lg-12 text-center my-3">
+                      <button [disabled]="this.AppForm.status=='INVALID' && !this.isValid" (click)="submitForm()" type="submit" class="submit" class="btn btn_White mt-2  w-25 px-1 "><span class="h5">Submit</span></button>
+                  </div>
+                </form>
+              </div>
+        <div class="col-lg-6">
+            <ng-lottie [options]="contact">
+            </ng-lottie>
+        </div>
+      </div>
+    </div>
+  
+  
+  </section>
+  
+  <!----------------------------- End app form ----------------->
+  
+</div>

@@ -1,0 +1,244 @@
+<div class="container">
+    <form [formGroup]="pro9Form">
+        <div class="examBox">
+            <div class="examhead text-center" data-aos-duration="700" data-aos="zoom-in"><h2>Proposal 9</h2></div>
+            <div class="quizBox">
+                <!-- Question 1 -->
+                <div class="row justify-content-center" data-aos-duration="700" data-aos="fade-right">
+                    <h2>1- <span class="mb-2 p_2">Enter the Following </span> :</h2>
+                    <div class="form-group w-40">
+                        <label class="cus_label"><span class="p_2 colored pb-0">Enter Height in (Cms)</span> .</label>
+                        <input placeholder="Enter Your height" formControlName="height" [class.is-valid]="this.pro9Form.controls.height.status=='VALID'" type="text" class="form-control mb-2 cus_input shadow_3">
+                        <div *ngIf="pro9Form.controls.height.errors && pro9Form.controls.height.touched" class="alert alert-danger">
+                            Please Enter Correct Height
+                        </div>
+                    </div>
+                    
+                    <div  class="form-group w-40">
+                        <label class="cus_label"><span class="p_2 colored">Enter Weight in (Kgs)</span> .</label>
+                        <input [class.is-valid]="this.pro9Form.controls.weight.status=='VALID'" placeholder="Enter Your Weight" formControlName="weight" type="text" class="form-control mb-2 cus_input shadow_3">
+                        <div *ngIf="pro9Form.controls.weight.errors && pro9Form.controls.weight.touched" class="alert alert-danger">
+                            Please Enter Correct Weight
+                        </div>
+                    </div>
+                    
+                    <hr>
+                </div>
+               
+                <!--  Question 2-->
+                <div data-aos-duration="700" data-aos="fade-left">
+                    <h2>2- <span class="p_2"> Have you used tobacco in the last 12 months? </span> .</h2>
+                    <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="false" name="last12Mon" (change)="getTobacco($event)"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="true" name="last12Mon" (change)="getTobacco($event)"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                </div>
+                </div>
+                
+                <div *ngIf="tobacco =='true'">
+                    <!--  Question 2.1-->
+                    <div class="mt-3">
+                        <h2>2.1-<span class="p_2"> If Vape </span> ?</h2>
+                        <div class="row mt-2" >
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getVape($event)" value="true" name="vape"></mat-radio-button>
+                                <label>Yes</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getVape($event)" value="false" name="vape"></mat-radio-button>
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Question 2.2-->
+                    <div class="mt-3" >
+                        <h2>2.2-<span class="p_2"> If Cigarettes &/or E-cigarettes specify the Daily frequency</span> .</h2>
+                        <div class="row mt-2" >
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getCigarettesOrECigarettes($event)" value="a" name="Cigarettes"></mat-radio-button>
+                                <label>[1 to 20]</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getCigarettesOrECigarettes($event)" value="b" name="Cigarettes"></mat-radio-button>
+                                <label>[21 or more]</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Question 2.3-->
+                    <div class="mt-3">
+                        <h2>2.3-<span class="p_2">If Shisha, please specify frequency</span> .</h2>
+                        <div class="row mt-2" >
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getShisha($event)" value="a" name="shisha"></mat-radio-button>
+                                <label>[1 to 7 times per week]</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getShisha($event)" value="b" name="shisha"></mat-radio-button>
+                                <label>More than 7 times per week </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- Question 3 -->
+                <div data-aos-duration="700" data-aos="fade-right">
+                    <h2>3-<span class="p_2"> Are you an alcohol Consumer </span>?</h2>
+                    <div class="row mt-3" >
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button (change)="alcoholChechFun($event)" value="false" name="Alcohol"></mat-radio-button>
+                            <label>No</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button (change)="alcoholChechFun($event)" value="true" name="Alcohol"></mat-radio-button>
+                            <label>Yes</label>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div *ngIf="alcoholCheck =='true'">
+                    <!--  Question 3.1-->
+                    <div class="mt-3">
+                        <h2>3.1-<span class="p_2"> Specify : </span> .</h2>
+                        <div class="row mt-2" >
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getAlcohol($event)" value="a" name="alcoholMuch"></mat-radio-button>
+                                <label>One/Day</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getAlcohol($event)" value="b" name="alcoholMuch"></mat-radio-button>
+                                <label>2 /Day</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getAlcohol($event)" value="c" name="alcoholMuch"></mat-radio-button>
+                                <label>3+ /Day</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getAlcohol($event)" value="d" name="alcoholMuch"></mat-radio-button>
+                                <label>Once per week</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <mat-radio-button (change)="getAlcohol($event)" value="e" name="alcoholMuch"></mat-radio-button>
+                                <label>Once per month</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Question 4 -->
+                <div>
+                    <h2>4-<span class="p_2"> Have any of your natural parents or siblings suffered from cancer</span> ?</h2>
+                    <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getFamilyCancer($event)" value="true" name="FamilyCancer"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getFamilyCancer($event)" value="false" name="FamilyCancer"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Question 5 -->
+                    <h2>5-<span class="p_2">Have you ever consulted your general practitioner or any doctor for a Condition or disorder linked to cancer, tumor or growth of any source </span>?</h2>
+                    <div class="row mt-3" >
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button (change)="getAskDoctorAboutCancer($event)"  value="true" name="AskDoctorAboutCancer"></mat-radio-button>
+                            <label>Yes</label>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button (change)="getAskDoctorAboutCancer($event)" value="false" name="AskDoctorAboutCancer"></mat-radio-button>
+                            <label>No</label>
+                        </div>
+                    </div>
+                    <hr>
+    
+                <!-- Question 6 -->
+                <h2>6-<span class="p_2"> Are you currently receiving or have you undergone medical treatment for more than 3 consecutive weeks during the last 10 years, or have you been under medical follow-up during the last 5 years for cancer, tumor or growth of any source? </span>?</h2>
+                <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getTreatmentOrFollowUpOrGrowthCancer($event)"  value="true" name="TreatmentOrFollowUpOrGrowthCancer"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getTreatmentOrFollowUpOrGrowthCancer($event)" value="false" name="TreatmentOrFollowUpOrGrowthCancer"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Question 7 -->
+                <h2>7-<span class="p_2"> Have you done any screening in the last 5 years such as Pet Scan, CT Scan, Bone Scan, MRI, Ultrasound, X-Ray, Biopsy, Directly or Indirectly related to cancer diagnosis, growth or tumor identification? </span>?</h2>
+                <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getScreeningWithCancer($event)"  value="true" name="ScreeningWithCancer"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getScreeningWithCancer($event)" value="false" name="ScreeningWithCancer"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Question 8 -->
+                <h2>8-<span class="p_2"> Is medical admission, surgery or medical investigations planned for the near future regarding cancer, tumor or growth of any kind? </span>?</h2>
+                <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getAdmissionOrSurgeryCancer($event)"  value="true" name="AdmissionOrSurgeryCancer"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getAdmissionOrSurgeryCancer($event)" value="false" name="AdmissionOrSurgeryCancer"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Question 9 -->
+                <h2>9-<span class="p_2"> Has any application for life cover or critical illness insurance been postponed, declined or accepted on special terms due to cancer, tumor or growth of any source </span>?</h2>
+                <div class="row mt-3" >
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getApplicationsAboutCancer($event)"  value="true" name="ApplicationsAboutCancer"></mat-radio-button>
+                        <label>Yes</label>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <mat-radio-button (change)="getApplicationsAboutCancer($event)" value="false" name="ApplicationsAboutCancer"></mat-radio-button>
+                        <label>No</label>
+                    </div>
+                </div>
+                <hr>
+    
+                <!-- Statement Declaration -->
+                <h2><span class="colored">Statement Declaration </span>:</h2>
+                <br>
+                <h2>1-<span class="p_2">I, hereby declare and agree that all answers given to all questions are to the best of my knowledge and belief, complete and true and that I have not withheld any material facts. I fully understand that, If this declaration is proved to be wrong or if any material information regarding my health has been  withheld, the policy would be void ab-initio.</span> .</h2>
+                <div class="col-md-6 col-sm-12 mt-2">
+                    <mat-checkbox class="example-margin" formControlName="firstEndorsement" name="firstEndorsement">Read and Agreed</mat-checkbox>
+                </div>
+                <hr>
+
+                <br>
+                <h2>2-<span class="p_2"> I hereby agree that the company assessing the risk under this proposal, any insurer/reinsurer,claims investigator or any survice provider engaged by the company for issuance, without any reference to me,  have access to all my medical examinations, laboratory tests or any document submitted by myself.</span> .</h2>
+                <div class="col-md-6 col-sm-12 mt-2">
+                    <mat-checkbox class="example-margin" formControlName="secondEndorsement" name="secendEndorsement">Read and Agreed</mat-checkbox>
+                </div>
+                <hr>
+
+            </div>
+    
+            <div class="text-center">
+                <div *ngIf="flag" class="alert alert-danger w-75 m-auto my-2"><h2>Error Occurred <br> Please Answer All Questions</h2></div>
+                <button [disabled]="this.pro9Form.status=='INVALID'" (click)="submitPro9Form()" class="btn btn_White px-5 fs-5">Submit</button>
+            </div>
+        
+        </div>
+    </form>
+</div>

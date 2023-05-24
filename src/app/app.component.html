@@ -1,0 +1,68 @@
+     <!-- Navbar -->
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="container d-flex justify-content-between">
+      
+        <div class="d-flex w-50">
+          <a href="http://obelisky.com/" target="_blank"><img src="assets/imgs/logo4.png" class="ml-auto" alt="logo"></a>
+          <div id="menu"*ngIf="this._AuthService.isLoggedIn()" (click)="opened=!opened" class="mt-2 mx-4">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div>
+          <span class="text_sm mx-1"><a href="https://obelisky.com/about" >About</a></span>
+          <span class="text_sm mx-1"><a href="https://obelisky.com/services" >Services</a></span>
+          <span class="text_sm mx-1"><a href="https://obelisky.com/contact" >Contact Us</a></span>
+          <button *ngIf="this._AuthService.isLoggedIn()==false" routerLink="/login" class="btn btn_coloredMain mx-2"> LogIn</button>
+          <button *ngIf="this._AuthService.isLoggedIn()" (click)="destroyTooken()" class="btn btn_coloredMain mx-2">Sign out</button>
+        </div>    
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+      <!-- SideBar -->
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <mat-list>
+
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div *ngFor="let treaty of allTreaties; let index = index" class="accordion-item">
+          <div *ngIf="treaty.id==3">
+            <h2 class="accordion-header">
+              <button *ngIf="this._AuthService.isLoggedIn()" (click)="iiiDD(treaty.id)" class="w-100 collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#test'+index"> 
+                {{treaty.name}}
+              </button>
+            </h2>
+            <div id="test{{index}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="my-1" routerLinkActive="active" routerLink="/slip">Slip</div>
+                <div class="my-1" routerLinkActive="active" routerLink="/application-form/{{treaty.id}}">Aplication Form</div>
+                <div class="my-1" routerLinkActive="active" routerLink="/proposalForms">Proposal Forms</div>
+                <div class="my-1" routerLinkActive="active" routerLink="/quotations">Quotations</div>
+                <div class="my-1" routerLinkActive="active" routerLink="/polices">Polices</div>
+                <div class="my-1" routerLinkActive="active" routerLink="/reports">Reports</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </mat-list>
+    
+    
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+
